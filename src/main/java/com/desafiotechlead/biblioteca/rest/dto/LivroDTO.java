@@ -1,9 +1,11 @@
 package com.desafiotechlead.biblioteca.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -19,5 +21,6 @@ public class LivroDTO {
 
     private String usuarioEmail;
 
-    private String dataCadastro;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataCadastro;
 }

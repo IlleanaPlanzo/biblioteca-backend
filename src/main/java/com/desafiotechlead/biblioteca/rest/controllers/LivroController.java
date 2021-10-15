@@ -43,14 +43,6 @@ public class LivroController {
         return livroService.persistir(livro);
     }
 
-    /*@GetMapping(value = "/{usuarioId}")
-    public List<Livro> listarPorUsuarioId(@RequestParam(value = "usuarioId", required = true) Long usuarioId) {
-
-        log.info("Buscando livros por ID do usuario: {}", usuarioId);
-
-        return livroService.buscarPorUsuarioId(usuarioId);
-    }*/
-
     @GetMapping
     public List<Livro> listarTodos() {
 
@@ -70,7 +62,7 @@ public class LivroController {
                     livroDTO.setId(livro.getId());
                     livroDTO.setNome(livro.getNome());
                     livroDTO.setAutor(livro.getAutor());
-                    livroDTO.setDataCadastro(livro.getDataCadastro().toString());
+                    livroDTO.setDataCadastro(livro.getDataCadastro());
                     livroDTO.setUsuarioEmail(livro.getUsuarioEmail());
                     return livroDTO;
                 })
@@ -82,7 +74,7 @@ public class LivroController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Long id, @RequestBody @Valid Livro livroAtualizado) {
+    public void atualizar(@PathVariable Long id, @RequestBody @Valid LivroDTO livroAtualizado) {
 
         livroService.findById(id)
                 .map(livro -> {
