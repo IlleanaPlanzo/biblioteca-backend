@@ -80,7 +80,7 @@ public class LivroController {
         return livroDTO;
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void atualizar(@PathVariable Long id, @RequestBody @Valid Livro livroAtualizado) {
 
